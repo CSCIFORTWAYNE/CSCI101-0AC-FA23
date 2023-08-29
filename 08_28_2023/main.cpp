@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <limits>
 #include <iomanip>
+#include <fstream>
 
 int main()
 {
@@ -74,5 +75,24 @@ int main()
     // for the lecture activity fill in the table rows for yourChar, yourStr, and yourBill
     std::cout << "goodbye!" << std::endl;
 
+    std::ifstream inFile;
+    inFile.open("cars.txt");
+    std::string make, model, color;
+    int year;
+    getline(inFile >> std::ws, make);
+    getline(inFile >> std::ws, model);
+    inFile >> year;
+    getline(inFile >> std::ws, color);
+
+    std::ofstream outFile;
+    outFile.open("carout.txt");
+    outFile << "Car #1: " << make << " " << model << " " << year << " " << color << std::endl;
+
+    getline(inFile >> std::ws, make);
+    getline(inFile >> std::ws, model);
+    inFile >> year;
+    getline(inFile >> std::ws, color);
+
+    outFile << "Car #2: " << make << " " << model << " " << year << " " << color << std::endl;
     return 0;
 }
