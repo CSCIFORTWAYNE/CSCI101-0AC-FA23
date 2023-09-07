@@ -1,0 +1,39 @@
+int x = -20;//EC in two's complement hex
+int y = 113;//71 in hex
+int z = y + x; //answer should be 93 or 5D in hex
+
+ 0001 0100
+----------
+ 1110 1011
++0000 0001
+----------
+ 1110 1100 EC
+
+2AEC //load into register A the bit pattern EC (-20 in two's complement hex)
+3A2D //store into memory cell 2D the contents of register A
+2A71 //load into register A the bit pattern 71 (113 in hex)
+3A2C //store into memory cell 2C the contents of register A
+132D //load into register 3 the contents of memory cell 2D
+142C //load into register 4 the contents of memory cell 2C
+5543 //add integers found in register 3 and 4 and put the result in register 5
+35FF //store into memory cell FF the contents of register 5
+C000
+
+
+Lecture Activity Convert the followng C++ to Brookshear Machine Language
+int a = -75;
+int b = 73;
+int c = a + 61 + b + -110;
+
+
+
+
+
+
+
+
+
+
+
+
+
