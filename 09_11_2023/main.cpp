@@ -2,24 +2,25 @@
 
 int main()
 {
-    double m, t, w, r, f, s, u;
-    double sum;
 
-    std::cout << "Enter the calories for Monday: ";
-    std::cin >> m;
-    if (!std::cin)
+    double day;
+    double sum = 0;
+    int i = 0;
+    while (i < 7)
     {
-        return 0;
+        std::cout << "Enter the calories for day " << i << ": ";
+        std::cin >> day;
+        if (!std::cin)
+        {
+            return 0;
+        }
+        sum += day;       // sum = sum + day;
+        /*int x = */ i++; // x = i;i = i + 1;
+        /* x = i--;
+        x = ++i; // i = i + 1; x = i;
+        x = --i; */
     }
 
-    std::cout << "Enter the calories for Tuesday: ";
-    std::cin >> t;
-    if (!std::cin)
-    {
-        return 0;
-    }
-
-    sum = m + t + w + r + f + s + u;
     std::cout << "The average calories burned per day is " << sum / 7 << std::endl;
     return 0;
 }
