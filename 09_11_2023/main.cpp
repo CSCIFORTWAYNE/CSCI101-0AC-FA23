@@ -86,6 +86,7 @@ int main()
     }
     std::cout << "Your top two scores are " << topPlace << " and " << secPlace << std::endl;
     std::cout << "Your worst score is " << worstPlace << std::endl;
+    // lecture activity use a for loop to get input for 7 days
 
     /* double day;
     double sum = 0;
