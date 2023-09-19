@@ -4,6 +4,13 @@
 #include <algorithm>
 #include <string>
 
+bool validateUnits(std::string units)
+{
+    transform(units.begin(), units.end(), units.begin(), ::toupper);
+    bool valid = units == "B" || units == "KB" || units == "MB" || units == "GB" || units == "TB";
+    return valid;
+}
+
 int main()
 {
     long long memSize;
