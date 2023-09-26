@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <limits>
 #include <cassert>
+#include <cstdlib>
 
 /* const int RED = 0;
 const int BLUE = 1;
@@ -41,6 +42,7 @@ colorType inputColor();
 void outputColorList();
 void resetStream();
 void codeGradeLoopFix(std::string errorLocation);
+cardFaceType generateCardFace();
 
 int main()
 {
@@ -61,6 +63,7 @@ int main()
     std::cout << output << std::endl;
     output = cardFaceToString(c1);
     std::cout << output << std::endl;
+    std::cout << cardFaceToString(generateCardFace()) << std::endl;
 
     return 0;
 }
@@ -217,5 +220,27 @@ void codeGradeLoopFix(std::string errorLocation)
     {
         std::cout << "There was a problem and there is no more input! @" << errorLocation << std::endl;
         assert(!std::cin.eof());
+    }
+}
+
+cardFaceType generateCardFace()
+{
+    while (true)
+    {
+        int card = rand() % 25 + 1;
+        switch (card)
+        {
+        case ACE:
+            return ACE;
+        case TWO:
+            return TWO;
+
+        // lecture activity fill in the rest of the cases;
+        case JOKER:
+            return JOKER;
+
+        default:
+            continue;
+        }
     }
 }
