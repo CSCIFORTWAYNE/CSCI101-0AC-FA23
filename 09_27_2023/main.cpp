@@ -36,6 +36,7 @@ void findSmallest(double[], int, int &);
 void seqSearch(double list[], int size, int &foundLoc, double searchItem);
 void sort(double list[], int size);
 void binSearch(double list[], int size, int &foundLoc, double searchItem);
+void twoDFunction(colorType[][2], int numRows, int numCols);
 
 int main()
 {
@@ -43,29 +44,61 @@ int main()
     double sum = 0;
     int i = 0;
     char again = 'y';
+    int nextItem = 0;
     initialize(days, NUM_DAYS);
+    while (again == 'y')
+    {
+        std::cout << "Enter the calories for day " << nextItem + 1 << ": ";
+        std::cin >> days[nextItem];
+        std::cout << std::endl;
+        while (!std::cin)
+        {
+            if (!std::cin)
+            {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "You entered something that is not a number! Please try again!" << std::endl;
+            }
+            std::cout << "Enter the calories for day " << nextItem + 1 << ": ";
+            std::cin >> days[nextItem];
+            std::cout << std::endl;
+        }
+        nextItem++;
+        // sum += day; // sum = sum + day;
+        /*int x = i++; // x = i;i = i + 1; */
 
-    inputData(days, NUM_DAYS);
+        std::cout << "Do you want to enter another day? ";
+        std::cin >> again;
+        std::cout << std::endl;
+        while (again != 'y' && again != 'n')
+        {
+            std::cout << "enter y or n" << std::endl;
+            std::cout << "Do you want to enter another day? ";
+            std::cin >> again;
+            std::cout << std::endl;
+        }
+    }
+    // inputData(days, NUM_DAYS);
     std::cout << "You entered:" << std::endl;
-    outputData(days, NUM_DAYS);
+    outputData(days, nextItem);
 
     int smallestIndex = 0, largestIndex = 0;
-    findLargest(days, NUM_DAYS, largestIndex);
-    findSmallest(days, NUM_DAYS, smallestIndex);
+    findLargest(days, nextItem, largestIndex);
+    findSmallest(days, nextItem, smallestIndex);
 
-    for (int i = 0; i < NUM_DAYS; i++)
+    for (int i = 0; i < nextItem; i++)
     {
         sum += days[i];
     }
     std::cout << days << std::endl;
     std::cout << "The max calories burned is " << days[largestIndex] << " on day " << largestIndex + 1 << std::endl;
     std::cout << "The min calories burned is " << days[smallestIndex] << " on day " << smallestIndex + 1 << std::endl;
-    std::cout << "You entered data for " << NUM_DAYS << " days." << std::endl;
-    std::cout << "The average calories burned per day is " << sum / NUM_DAYS << std::endl;
+    std::cout << "You entered data for " << nextItem << " days." << std::endl;
+    std::cout << "The average calories burned per day is " << sum / nextItem << std::endl;
 
-    sort(days, NUM_DAYS);
-    outputData(days, NUM_DAYS);
-    binSearch(days, NUM_DAYS, largestIndex, 985);
+    sort(days, nextItem);
+    outputData(days, nextItem);
+    binSearch(days, nextItem, largestIndex, 985);
     if (largestIndex == -1)
     {
         std::cout << "item not found" << std::endl;
@@ -83,6 +116,25 @@ int main()
     outFile << thecolor;
     outFile.close();
 
+    colorType colorTable[5][2];
+    colorTable[0][0] = BLUE;
+    int row = 0;
+    for (int col = 0; col < 2; col++)
+    {
+        colorTable[row][col] = BLUE;
+    }
+    int col = 1;
+    for (int row = 0; row < 5; row++)
+    {
+        colorTable[row][col] = GREEN;
+    }
+    for (int row = 0; row < 5; row++)
+    {
+        for (int col = 0; col < 2; col++)
+        {
+            colorTable[row][col] = RED;
+        }
+    }
     return 0;
 }
 
